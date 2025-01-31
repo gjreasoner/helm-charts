@@ -52,6 +52,14 @@ resources: {}
   #   cpu: 100m
   #   memory: 128Mi
 
+podDisruptionBudget:
+  # PodDisruptionBudgets are essential to ensure that tunnels don't go down during normal cluster operations, like
+  # rolling restarts of nodes. If enabled will be added automatically once the replica size is greater than 1
+  # and ensure that at least one replica is ready before the pod will be drained.
+  enabled: false
+  minAvailable: 1
+  maxUnavailable:
+
 nodeSelector: {}
 
 tolerations: []
